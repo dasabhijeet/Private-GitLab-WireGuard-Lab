@@ -1,0 +1,10 @@
+[[runners]]
+  name = "group-runner"
+  url = "https://10.10.0.10"
+  token = "<RUNNER_TOKEN>"
+  executor = "docker"
+  [runners.docker]
+    image = "alpine:latest"
+    privileged = false
+    network_mode = "host"
+    tls_verify = false

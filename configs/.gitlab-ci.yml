@@ -1,0 +1,24 @@
+stages: [lint, test, build]
+
+lint:
+  stage: lint
+  script: ["echo linting..."]
+
+test:
+  stage: test
+  script:
+    - echo "running tests..."
+    - echo "Secret value is $MY_SECRET"
+  variables:
+    MY_SECRET: $MASKED_VAR
+
+build:
+  stage: build
+  script: ["echo build output here"]
+
+gitleaks:
+  stage: test
+  image:
+    name: zricethezav/gitleaks:latest
+    entrypoint: [""]
+  script: ["gitleaks detect --source . --no-git -v"]
